@@ -30,7 +30,7 @@ export default class UserController extends Controller {
           success: true,
           code: 200,
           data: {
-            userInfo,
+            ...userInfo,
             token,
           },
           msg: '登录成功',

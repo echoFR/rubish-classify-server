@@ -9,8 +9,8 @@ export default () => {
         ctx.body = {
           success: false,
           code: 401,
-          data: {},
-          msg: '用户登录信息已失效，请尝试登录',
+          data: null,
+          msg: err.message,
         };
       } else {
         throw err;

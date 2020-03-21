@@ -1,5 +1,5 @@
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
-import { vx, mysql, jwt } from '../userConfig';
+import { vx, mysql, jwt, voiceConig } from '../userConfig';
 
 export default (appInfo: EggAppInfo) => {
   const config = {} as PowerPartial<EggAppConfig>;
@@ -9,7 +9,7 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1584117536042_4683';
 
   // add your egg config in here
-  config.middleware = [ 'payload', 'jwtHandler', 'jwt', 'errorHandler' ];
+  config.middleware = [ 'payload', 'errorHandler', 'jwtHandler', 'jwt' ];
 
   // add your special config in here
   const bizConfig = {
@@ -20,6 +20,11 @@ export default (appInfo: EggAppInfo) => {
     cors: {
       origin: ctx => ctx.get('origin'), // '*'
       allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+    },
+    multipart: {
+      fileSize: '2gb', // 限制文件大小
+      whitelist: [ '.aac', '.m4a', '.mp3' ], // 支持上传的文件后缀名
+      autoFields: true,
     },
     security: {
       csrf: {
@@ -38,8 +43,9 @@ export default (appInfo: EggAppInfo) => {
     vx,
     jwt: {
       ...jwt,
-      unless: { path: [ '/', '/login' ] },
+      unless: { path: [ /^\/$/, /^\/api\// ] },
     },
+    voiceConig,
   };
 
   // the return config will combines to EggAppConfig
