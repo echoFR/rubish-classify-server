@@ -1,6 +1,6 @@
 import { Controller } from 'egg';
 export default class UserController extends Controller {
-  public async login() {
+  public async login () {
     const { ctx, app, service: { user }, config: { jwt: {
       secret,
     } } } = this;
@@ -10,8 +10,7 @@ export default class UserController extends Controller {
       const vxOpenData = await user.getVXOpenId(code);
       const { openid } = vxOpenData;
       if (openid) {
-        const userData = await user.getUserByOpenId(openid);
-        // 用户不存在，添加
+        let userData = await user.getUserByOpenId(openid);
         if (!userData) {
           const res = await user.addUser({
             ...userInfo,

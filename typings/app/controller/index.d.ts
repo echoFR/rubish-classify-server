@@ -2,14 +2,20 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
+import ExportCollect from '../../../app/controller/collect';
+import ExportHistory from '../../../app/controller/history';
 import ExportHome from '../../../app/controller/home';
 import ExportRubbish from '../../../app/controller/rubbish';
+import ExportSearch from '../../../app/controller/search';
 import ExportUser from '../../../app/controller/user';
 
 declare module 'egg' {
   interface IController {
+    collect: ExportCollect;
+    history: ExportHistory;
     home: ExportHome;
     rubbish: ExportRubbish;
+    search: ExportSearch;
     user: ExportUser;
   }
 }
