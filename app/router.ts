@@ -13,7 +13,7 @@ export default (app: Application) => {
   router.get('/api/rubbish/nameOne', controller.rubbish.getByNameOne);
   router.get('/api/rubbish/category', controller.rubbish.getByCategory);
 
-  router.get('/collect/all', controller.collect.getCollect);
+  router.get('/collect/get', controller.collect.getCollect);
   router.post('/collect/add', controller.collect.addCollect);
   router.post('/collect/delete', controller.collect.delectCollect);
   router.post('/collect/deleteAll', controller.collect.delectCollectAll);
