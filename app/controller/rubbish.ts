@@ -46,4 +46,14 @@ export default class RubbishController extends Controller {
       msg: '按分类查找垃圾'
     }
   }
+  public async getAll() {
+    const { ctx, service: { rubbish } } = this;
+    const data = await rubbish.getAll()
+    ctx.body = {
+      success: true,
+      code: 200,
+      data,
+      msg: '查询搜索垃圾信息'
+    }
+  }
 }

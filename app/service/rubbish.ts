@@ -18,4 +18,9 @@ export default class RubbishService extends Service {
     const sql = `select * from rubbish where category = ${category}`;
     return await app.mysql.query(sql);
   }
+  public async getAll () {
+    const { app } = this;
+    const sql = `select * from rubbish`;
+    return await app.mysql.query(sql);
+  }
 }
