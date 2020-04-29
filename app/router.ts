@@ -25,10 +25,9 @@ export default (app: Application) => {
   router.post('/history/deleteAll', controller.history.delectHistoryAll);
 
   router.get('/practice/all', controller.practice.getAll);
-  router.get('/practice/byId', controller.practice.getById);
+  router.get('/api//practice/byId', controller.practice.getById);
   router.post('/practice/add', controller.practice.addPractice);
   router.post('/api/practice/addVisit', controller.practice.addVisitPractice);
-  router.post('/practice/delete', controller.practice.delectPractice);
 
   router.get('/api/search/gethot', controller.search.getHotSearch);
   router.post('/api/search/add', controller.search.addSearch);

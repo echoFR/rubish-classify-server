@@ -8,7 +8,7 @@ export default class PracticeController extends Controller {
       success: true,
       code: 200,
       data,
-      msg: '用户收藏'
+      msg: '用户答题记录'
     }
   }
 
@@ -20,7 +20,7 @@ export default class PracticeController extends Controller {
       success: true,
       code: 200,
       data,
-      msg: '用户收藏'
+      msg: '通过id获取答题记录'
     }
   }
 
@@ -32,7 +32,7 @@ export default class PracticeController extends Controller {
       success: true,
       code: 200,
       data,
-      msg: '添加用户收藏'
+      msg: '添加用户答题记录'
     }
   }
 
@@ -44,19 +44,7 @@ export default class PracticeController extends Controller {
       success: true,
       code: 200,
       data,
-      msg: '添加访客收藏'
-    }
-  }
-
-  public async delectPractice () {
-    const { ctx, service: { practice } } = this;
-    const { payload: { id } } = ctx
-    const data = await practice.delectPractice(id);
-    ctx.body = {
-      success: true,
-      code: 200,
-      data,
-      msg: '删除收藏'
+      msg: '添加访客答题记录'
     }
   }
 }
